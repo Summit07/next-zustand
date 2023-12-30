@@ -20,7 +20,10 @@ export type Actions = {
   addTask: (title: string, description?: string) => void
   dragTask: (id: string | null) => void
   removeTask: (title: string) => void
-  updateTask: (title: string, status: Status) => void
+  // updateTask: (title: string, status: Status) => void
+  updateTask: (id: string | null, title: string, description?: String) => void
+
+  updateDrag: (id: string | null, status: Status) => void
 }
 
 export const useTaskStore = create<State & Actions>()(
@@ -40,8 +43,16 @@ export const useTaskStore = create<State & Actions>()(
         set(state => ({
           tasks: state.tasks.filter(task => task.id !== id)
         })),
-      updateTask: (id: string, status: Status) =>
+      updateTask: (id: string | null, title: string, description: string) =>
         set(state => ({
+
+          tasks: state.tasks.map(task =>
+            task.id === id ? { ...task, title, description } : task
+          )
+        })),
+      updateDrag: (id: string | null, status: Status) =>
+        set(state => ({
+
           tasks: state.tasks.map(task =>
             task.id === id ? { ...task, status } : task
           )

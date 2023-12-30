@@ -18,6 +18,7 @@ export default function Column({
   )
 
   const updateTask = useTaskStore(state => state.updateTask)
+  const updateDrag = useTaskStore(state => state.updateDrag)
   const dragTask = useTaskStore(state => state.dragTask)
 
   const draggedTask = useTaskStore(state => state.draggedTask)
@@ -28,13 +29,14 @@ export default function Column({
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     if (!draggedTask) return
-    updateTask(draggedTask, status)
+    // updateTask(draggedTask, status)
+    updateDrag(draggedTask, status)
     dragTask(null)
   }
 
   return (
-    <section className='h-[600px] flex-1'>
-      <h2 className='ml-1 font-serif text-2xl font-semibold'>{title}</h2>
+    <section className='min-h-screen flex-1 mt-8'>
+      <h2 className='ml-1 font-serif text-2xl font-semibold flex justify-center items-center bg-clip-text text-transparent bg-gradient-to-tr  from-green-500 from-40%  to-amber-500 to-60%'>{title}</h2>
 
       <div
         className='mt-3.5 h-full w-full rounded-xl bg-gray-700/50 p-4'

@@ -33,7 +33,7 @@ export default function NewTodoDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant='secondary' size='sm'>
+        <Button variant='secondary' size='sm' className='flex text-gray-500 border border-gray-300 text-md bg-clip-text text-transparent bg-gradient-to-tr  from-indigo-500 from-12% via-sky-500 via-33% to-emerald-500 to-70% '>
           ＋ Add New Todo
         </Button>
       </DialogTrigger>
